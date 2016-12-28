@@ -27,8 +27,10 @@
                             <TableColumn fx:id="colmName" prefWidth="121.0" text="Назва" />
                             <TableColumn fx:id="columCount" prefWidth="64.0" text="Кількість" />
                             <TableColumn fx:id="columDeciminal" prefWidth="111.0" text="Міра виміру" />
-                            <TableColumn fx:id="columCategory" prefWidth="107.0" text="Категорія" />
+                            <TableColumn fx:id="columCategory"  prefWidth="107.0" text="Категорія" />
                             <TableColumn fx:id="columSerial" prefWidth="116.0" text="Серійний номер" />
+                            <TableColumn fx:id="columSurvice" prefWidth="116.0" text="на балансі" />
+                            <TableColumn fx:id="columDete" prefWidth="116.0" text="Додано" />
                           </columns>
                         </TableView>
                      </children>

@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * Created by script972 on 27.12.2016.
@@ -82,21 +83,23 @@ public class Manipulate {
         conn.close();
     }
 
-    public void findValue(String name) throws SQLException {
+    public ArrayList findValue(String name) throws SQLException {
         DBProcessor db=new DBProcessor();
         Connection conn=db.getConnection(URL, USERNAME, PASSWORD);
         String queryForLogin="SELECT * from cklad.valuematerial WHERE name='"+name+"'";
         Statement statement=conn.createStatement();
         ResultSet resultSet= statement.executeQuery(queryForLogin);
-        String nameO, deciminal, category, serial_number;
+        ArrayList arrayList=new ArrayList<ValueMaterial>();
         int count;
         while(resultSet.next()){
-             resultSet.getString("password");
-            idUser=resultSet.getInt("id");
+            ValueMaterial valueMaterial=new ValueMaterial(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getInt("count"), resultSet.getString("deciminal"), resultSet.getInt("category"), resultSet.getString("serial_number"));
+            arrayList.add(valueMaterial);
+
         }
 
         statement.close();
         conn.close();
+        return arrayList;
 
     }
 }

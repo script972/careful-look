@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Created by script972 on 16.12.2016.
@@ -50,18 +51,10 @@ public class MainWindowController {
 
 
     @FXML
-    TableView<ValueMaterial> tableValue;
     private ObservableList usersData = FXCollections.observableArrayList();
- /*<TableColumn fx:id="columID" prefWidth="40.0" text="id" />
-                            <TableColumn fx:id="colmName" prefWidth="121.0" text="Назва" />
-                            <TableColumn fx:id="columCount" prefWidth="64.0" text="Кількість" />
-                            <TableColumn fx:id="columDeciminal" prefWidth="111.0" text="Міра виміру" />
-                            <TableColumn fx:id="columCategory" prefWidth="107.0" text="Категорія" />
-                            <TableColumn fx:id="columSerial" prefWidth="116.0" text="Серійний номер" />*/
-
 
     @FXML
-    private TableView<User> tableUsers;
+    private TableView<ValueMaterial> tableValue;
 
     @FXML
     private TableColumn<ValueMaterial, Integer> columID;
@@ -73,9 +66,27 @@ public class MainWindowController {
     private TableColumn<ValueMaterial, Integer> columCount;
 
     @FXML
+    private TableColumn<ValueMaterial, String> columDeciminal;
+
+    @FXML
     private TableColumn<ValueMaterial, Integer> columCategory;
+
     @FXML
     private TableColumn<ValueMaterial, String> columSerial;
+    @FXML
+    private TableColumn<ValueMaterial, Integer> columSurvice;
+    @FXML
+    private TableColumn<ValueMaterial, String> columDete;
+
+
+    @FXML
+    private void figak() {
+
+        // устанавливаем тип и значение которое должно хранится в колонке
+
+    }
+
+
 
     Manipulate manipulate=new Manipulate();
 
@@ -117,27 +128,23 @@ public class MainWindowController {
         }
     }
 
-    @FXML
-    private void initialize(){
-        initData();
-
-        // устанавливаем тип и значение которое должно хранится в колонке
-        columID.setCellValueFactory(new PropertyValueFactory<ValueMaterial, Integer>("id"));
-        colmName.setCellValueFactory(new PropertyValueFactory<ValueMaterial, String>("Name"));
-        columCount.setCellValueFactory(new PropertyValueFactory<ValueMaterial, Integer>("count"));
-        columCategory.setCellValueFactory(new PropertyValueFactory<ValueMaterial, Integer>("category"));
-        // заполняем таблицу данными
-        tableUsers.setItems(usersData);
-    }
 
     public void findValue(ActionEvent actionEvent) throws SQLException {
-        manipulate.findValue(findname.getText());
+        ArrayList arrayList=manipulate.findValue(findname.getText());
+        ObservableList obL=FXCollections.observableArrayList(arrayList);
 
-    }
 
-    private void initData() {
-        usersData.add(new ValueMaterial(1, "Alex", "2", "cm", "1", "22222"));
+        columID.setCellValueFactory(new PropertyValueFactory<ValueMaterial, Integer>("id"));
+        colmName.setCellValueFactory(new PropertyValueFactory<ValueMaterial, String>("name"));
+        columCount.setCellValueFactory(new PropertyValueFactory<ValueMaterial, Integer>("count"));
+        columDeciminal.setCellValueFactory(new PropertyValueFactory<ValueMaterial, String>("deciminal"));
+        columCategory.setCellValueFactory(new PropertyValueFactory<ValueMaterial, Integer>("category"));
+        columSerial.setCellValueFactory(new PropertyValueFactory<ValueMaterial, String>("serial_number"));
+        columSurvice.setCellValueFactory(new PropertyValueFactory<ValueMaterial, Integer>("id_survice"));
+        columDete.setCellValueFactory(new PropertyValueFactory<ValueMaterial, String>("create"));
 
+        System.out.println(obL);
+        tableValue.setItems(obL);
 
     }
 }

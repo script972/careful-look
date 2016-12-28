@@ -9,21 +9,45 @@ import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 public class ValueMaterial {
     int id;
     String name;
-    String count;
+    int count;
     String deciminal;
-    String category;
+    int category;
     String serial_number;
-    String id_survice;
-    String create_by;
+    int id_survice;
+    int create_by;
 
-
-    public ValueMaterial(int id, String name, String count, String deciminal, String category, String serial_number) {
+    public ValueMaterial(int id, String name, int count, String deciminal, int category, String serial_number) {
         this.id = id;
         this.name = name;
         this.count = count;
         this.deciminal = deciminal;
         this.category = category;
         this.serial_number = serial_number;
+    }
+
+    @Override
+    public String toString() {
+        return "ValueMaterial{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", count=" + count +
+                ", deciminal='" + deciminal + '\'' +
+                ", category=" + category +
+                ", serial_number='" + serial_number + '\'' +
+                ", id_survice=" + id_survice +
+                ", create_by=" + create_by +
+                '}';
+    }
+
+    public ValueMaterial(int id, String name, int count, String deciminal, int category, String serial_number, int id_survice, int create_by) {
+        this.id = id;
+        this.name = name;
+        this.count = count;
+        this.deciminal = deciminal;
+        this.category = category;
+        this.serial_number = serial_number;
+        this.id_survice = id_survice;
+        this.create_by = create_by;
     }
 
     public int getId() {
@@ -42,11 +66,11 @@ public class ValueMaterial {
         this.name = name;
     }
 
-    public String getCount() {
+    public int getCount() {
         return count;
     }
 
-    public void setCount(String count) {
+    public void setCount(int count) {
         this.count = count;
     }
 
@@ -58,11 +82,11 @@ public class ValueMaterial {
         this.deciminal = deciminal;
     }
 
-    public String getCategory() {
+    public int getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(int category) {
         this.category = category;
     }
 
@@ -74,19 +98,19 @@ public class ValueMaterial {
         this.serial_number = serial_number;
     }
 
-    public String getId_survice() {
+    public int getId_survice() {
         return id_survice;
     }
 
-    public void setId_survice(String id_survice) {
+    public void setId_survice(int id_survice) {
         this.id_survice = id_survice;
     }
 
-    public String getCreate_by() {
+    public int getCreate_by() {
         return create_by;
     }
 
-    public void setCreate_by(String create_by) {
+    public void setCreate_by(int create_by) {
         this.create_by = create_by;
     }
 }
